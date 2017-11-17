@@ -1,0 +1,5 @@
+<RCC>
+  <qresource prefix="pd_studio">
+    <file>Resources/icons/desktop.jpg</file>
+  </qresource>
+</RCC>
