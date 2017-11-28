@@ -9,6 +9,12 @@ struct SignalData
     double o = 0;
 };
 
+struct ResultantAcc
+{
+	double time = 0;
+	double data = 0;
+};
+
 enum SigTypeByAxis
 {
 	x_axis,

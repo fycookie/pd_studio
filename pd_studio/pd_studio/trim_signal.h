@@ -28,10 +28,11 @@ private:
 
 //For slots
 public:
-    void SlotTrimSave(double begin, double end);
-    void SlotTrimReset();
+    QWidget* SlotTrimSave(vector<ResultantAcc> &data,
+                          double t_begin, double t_end);
+    QWidget* SlotTrimReset();
     void SlotTrimExport();
-    void SlotTrimUpdate(QWidget *widget);
+    QWidget* SlotTrimUpdate();
 
 private:
     void ReadCSV(string fPath);
@@ -43,4 +44,5 @@ public:
 	void ReadFile(FileSuffixType fType,
 		string fPath);
 	QWidget* PlotSignal();
+    //void RePlot(QWidget *widget);
 };

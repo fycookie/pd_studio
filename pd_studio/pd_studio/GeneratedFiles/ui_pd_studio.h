@@ -32,7 +32,7 @@
 
 QT_BEGIN_NAMESPACE
 
-class Ui_pd_studio_qmainwindow
+class Ui_pd_studio
 {
 public:
     QWidget *centralWidget;
@@ -75,7 +75,9 @@ public:
     QPushButton *btn_trim_export;
     QGroupBox *gbox_trans;
     QHBoxLayout *horizontalLayout_5;
+    QVBoxLayout *verticalLayout_6;
     QPushButton *btn_filter;
+    QPushButton *btn_filter_update;
     QVBoxLayout *vlt_freq;
     QRadioButton *rbtn_fft;
     QRadioButton *rbtn_wavelet;
@@ -85,14 +87,14 @@ public:
     QToolBar *mainToolBar;
     QStatusBar *statusBar;
 
-    void setupUi(QMainWindow *pd_studio_qmainwindow)
+    void setupUi(QMainWindow *pd_studio)
     {
-        if (pd_studio_qmainwindow->objectName().isEmpty())
-            pd_studio_qmainwindow->setObjectName(QStringLiteral("pd_studio_qmainwindow"));
-        pd_studio_qmainwindow->resize(831, 529);
-        pd_studio_qmainwindow->setMinimumSize(QSize(800, 0));
-        pd_studio_qmainwindow->setStyleSheet(QStringLiteral("background-color: rgb(177, 203, 210);"));
-        centralWidget = new QWidget(pd_studio_qmainwindow);
+        if (pd_studio->objectName().isEmpty())
+            pd_studio->setObjectName(QStringLiteral("pd_studio"));
+        pd_studio->resize(800, 600);
+        pd_studio->setMinimumSize(QSize(800, 600));
+        pd_studio->setStyleSheet(QStringLiteral("background-color: rgb(177, 203, 210);"));
+        centralWidget = new QWidget(pd_studio);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         centralWidget->setLayoutDirection(Qt::LeftToRight);
         centralWidget->setAutoFillBackground(false);
@@ -326,10 +328,21 @@ public:
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setContentsMargins(11, 11, 11, 11);
         horizontalLayout_5->setObjectName(QStringLiteral("horizontalLayout_5"));
+        verticalLayout_6 = new QVBoxLayout();
+        verticalLayout_6->setSpacing(6);
+        verticalLayout_6->setObjectName(QStringLiteral("verticalLayout_6"));
         btn_filter = new QPushButton(gbox_trans);
         btn_filter->setObjectName(QStringLiteral("btn_filter"));
 
-        horizontalLayout_5->addWidget(btn_filter);
+        verticalLayout_6->addWidget(btn_filter);
+
+        btn_filter_update = new QPushButton(gbox_trans);
+        btn_filter_update->setObjectName(QStringLiteral("btn_filter_update"));
+
+        verticalLayout_6->addWidget(btn_filter_update);
+
+
+        horizontalLayout_5->addLayout(verticalLayout_6);
 
         vlt_freq = new QVBoxLayout();
         vlt_freq->setSpacing(6);
@@ -360,11 +373,11 @@ public:
 
         tabWidget_main = new QTabWidget(centralWidget);
         tabWidget_main->setObjectName(QStringLiteral("tabWidget_main"));
-        tabWidget_main->setMinimumSize(QSize(650, 350));
+        tabWidget_main->setMinimumSize(QSize(600, 270));
         tabWidget_main->setMouseTracking(true);
         tabWidget_main->setAcceptDrops(true);
         tabWidget_main->setAutoFillBackground(false);
-        tabWidget_main->setStyleSheet(QStringLiteral("border-image: url(:/pd_studio/Resources/icons/desktop.jpg);"));
+        tabWidget_main->setStyleSheet(QStringLiteral(""));
         tabWidget_main->setTabsClosable(true);
 
         verticalLayout->addWidget(tabWidget_main);
@@ -372,62 +385,63 @@ public:
 
         verticalLayout_4->addLayout(verticalLayout);
 
-        pd_studio_qmainwindow->setCentralWidget(centralWidget);
-        menuBar = new QMenuBar(pd_studio_qmainwindow);
+        pd_studio->setCentralWidget(centralWidget);
+        menuBar = new QMenuBar(pd_studio);
         menuBar->setObjectName(QStringLiteral("menuBar"));
-        menuBar->setGeometry(QRect(0, 0, 831, 21));
-        pd_studio_qmainwindow->setMenuBar(menuBar);
-        mainToolBar = new QToolBar(pd_studio_qmainwindow);
+        menuBar->setGeometry(QRect(0, 0, 800, 21));
+        pd_studio->setMenuBar(menuBar);
+        mainToolBar = new QToolBar(pd_studio);
         mainToolBar->setObjectName(QStringLiteral("mainToolBar"));
-        pd_studio_qmainwindow->addToolBar(Qt::TopToolBarArea, mainToolBar);
-        statusBar = new QStatusBar(pd_studio_qmainwindow);
+        pd_studio->addToolBar(Qt::TopToolBarArea, mainToolBar);
+        statusBar = new QStatusBar(pd_studio);
         statusBar->setObjectName(QStringLiteral("statusBar"));
-        pd_studio_qmainwindow->setStatusBar(statusBar);
+        pd_studio->setStatusBar(statusBar);
 
-        retranslateUi(pd_studio_qmainwindow);
-        QObject::connect(tabWidget_main, SIGNAL(tabCloseRequested(int)), pd_studio_qmainwindow, SLOT(slot_closeTab()));
-        QObject::connect(btn_import, SIGNAL(clicked()), pd_studio_qmainwindow, SLOT(slot_fileOpen()));
+        retranslateUi(pd_studio);
+        QObject::connect(tabWidget_main, SIGNAL(tabCloseRequested(int)), pd_studio, SLOT(slot_closeTab()));
+        QObject::connect(btn_import, SIGNAL(clicked()), pd_studio, SLOT(slot_fileOpen()));
 
         tabWidget_menu->setCurrentIndex(2);
         tabWidget_main->setCurrentIndex(-1);
 
 
-        QMetaObject::connectSlotsByName(pd_studio_qmainwindow);
+        QMetaObject::connectSlotsByName(pd_studio);
     } // setupUi
 
-    void retranslateUi(QMainWindow *pd_studio_qmainwindow)
+    void retranslateUi(QMainWindow *pd_studio)
     {
-        pd_studio_qmainwindow->setWindowTitle(QApplication::translate("pd_studio_qmainwindow", "pd_studio", Q_NULLPTR));
-        tabWidget_menu->setTabText(tabWidget_menu->indexOf(tab_file), QApplication::translate("pd_studio_qmainwindow", "file", Q_NULLPTR));
-        pushButton->setText(QApplication::translate("pd_studio_qmainwindow", "Measure 1", Q_NULLPTR));
-        pushButton_2->setText(QApplication::translate("pd_studio_qmainwindow", "Measure 2", Q_NULLPTR));
-        pushButton_3->setText(QApplication::translate("pd_studio_qmainwindow", "Measure 3", Q_NULLPTR));
-        pushButton_4->setText(QApplication::translate("pd_studio_qmainwindow", "Measure 4", Q_NULLPTR));
-        pushButton_5->setText(QApplication::translate("pd_studio_qmainwindow", "Measure 5", Q_NULLPTR));
-        pushButton_6->setText(QApplication::translate("pd_studio_qmainwindow", "Measure 6", Q_NULLPTR));
-        pushButton_7->setText(QApplication::translate("pd_studio_qmainwindow", "Measure 7", Q_NULLPTR));
-        pushButton_8->setText(QApplication::translate("pd_studio_qmainwindow", "Measure 8", Q_NULLPTR));
-        tabWidget_menu->setTabText(tabWidget_menu->indexOf(tab_data_collect), QApplication::translate("pd_studio_qmainwindow", "data_collect", Q_NULLPTR));
+        pd_studio->setWindowTitle(QApplication::translate("pd_studio", "pd_studio", Q_NULLPTR));
+        tabWidget_menu->setTabText(tabWidget_menu->indexOf(tab_file), QApplication::translate("pd_studio", "file", Q_NULLPTR));
+        pushButton->setText(QApplication::translate("pd_studio", "Measure 1", Q_NULLPTR));
+        pushButton_2->setText(QApplication::translate("pd_studio", "Measure 2", Q_NULLPTR));
+        pushButton_3->setText(QApplication::translate("pd_studio", "Measure 3", Q_NULLPTR));
+        pushButton_4->setText(QApplication::translate("pd_studio", "Measure 4", Q_NULLPTR));
+        pushButton_5->setText(QApplication::translate("pd_studio", "Measure 5", Q_NULLPTR));
+        pushButton_6->setText(QApplication::translate("pd_studio", "Measure 6", Q_NULLPTR));
+        pushButton_7->setText(QApplication::translate("pd_studio", "Measure 7", Q_NULLPTR));
+        pushButton_8->setText(QApplication::translate("pd_studio", "Measure 8", Q_NULLPTR));
+        tabWidget_menu->setTabText(tabWidget_menu->indexOf(tab_data_collect), QApplication::translate("pd_studio", "data_collect", Q_NULLPTR));
         gbox_data->setTitle(QString());
-        btn_import->setText(QApplication::translate("pd_studio_qmainwindow", "import", Q_NULLPTR));
-        btn_update->setText(QApplication::translate("pd_studio_qmainwindow", "update", Q_NULLPTR));
+        btn_import->setText(QApplication::translate("pd_studio", "import", Q_NULLPTR));
+        btn_update->setText(QString());
         gbox_dataCut->setTitle(QString());
-        label_beginwith->setText(QApplication::translate("pd_studio_qmainwindow", "Begin with:", Q_NULLPTR));
-        label_endwith->setText(QApplication::translate("pd_studio_qmainwindow", "End with:", Q_NULLPTR));
-        btn_trim_reset->setText(QApplication::translate("pd_studio_qmainwindow", "Res", Q_NULLPTR));
-        btn_trim_save->setText(QApplication::translate("pd_studio_qmainwindow", "Save", Q_NULLPTR));
-        btn_trim_export->setText(QApplication::translate("pd_studio_qmainwindow", "export", Q_NULLPTR));
+        label_beginwith->setText(QApplication::translate("pd_studio", "Begin with:", Q_NULLPTR));
+        label_endwith->setText(QApplication::translate("pd_studio", "End with:", Q_NULLPTR));
+        btn_trim_reset->setText(QApplication::translate("pd_studio", "Res", Q_NULLPTR));
+        btn_trim_save->setText(QApplication::translate("pd_studio", "Save", Q_NULLPTR));
+        btn_trim_export->setText(QApplication::translate("pd_studio", "export", Q_NULLPTR));
         gbox_trans->setTitle(QString());
-        btn_filter->setText(QApplication::translate("pd_studio_qmainwindow", "filter", Q_NULLPTR));
-        rbtn_fft->setText(QApplication::translate("pd_studio_qmainwindow", "fft", Q_NULLPTR));
-        rbtn_wavelet->setText(QApplication::translate("pd_studio_qmainwindow", "wavelet", Q_NULLPTR));
-        tabWidget_menu->setTabText(tabWidget_menu->indexOf(tab_data_deal), QApplication::translate("pd_studio_qmainwindow", "data_deal", Q_NULLPTR));
+        btn_filter->setText(QApplication::translate("pd_studio", "filter", Q_NULLPTR));
+        btn_filter_update->setText(QApplication::translate("pd_studio", "update", Q_NULLPTR));
+        rbtn_fft->setText(QApplication::translate("pd_studio", "fft", Q_NULLPTR));
+        rbtn_wavelet->setText(QApplication::translate("pd_studio", "wavelet", Q_NULLPTR));
+        tabWidget_menu->setTabText(tabWidget_menu->indexOf(tab_data_deal), QApplication::translate("pd_studio", "data_deal", Q_NULLPTR));
     } // retranslateUi
 
 };
 
 namespace Ui {
-    class pd_studio_qmainwindow: public Ui_pd_studio_qmainwindow {};
+    class pd_studio: public Ui_pd_studio {};
 } // namespace Ui
 
 QT_END_NAMESPACE

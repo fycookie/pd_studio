@@ -24,6 +24,10 @@ pd_studio::pd_studio(QWidget *parent)
             this, SLOT(slot_Trim_Reset()));
     connect(ui.btn_trim_save, SIGNAL(clicked(bool)),
             this, SLOT(slot_Trim_Save()));
+    connect(ui.btn_filter, SIGNAL(clicked(bool)),
+            this, SLOT(slot_Filter()));
+	connect(ui.btn_filter_update, SIGNAL(cliked(bool)),
+		this, SLOT(slot_Filter_Update()));
 }
 
 void pd_studio::slot_FileImport()
@@ -60,12 +64,18 @@ void pd_studio::slot_Trim_Save()
         return;
     }
 
-	trim->SlotTrimSave(begin, end);
+    slot_CloseTab(ui.tabWidget_main->currentIndex());
+    QWidget *widget = trim->SlotTrimSave(resul_acc, begin, end);
+    ui.tabWidget_main->insertTab(11, widget, "Signal");
+    //trim->SlotTrimSave(begin, end);
 }
 
 void pd_studio::slot_Trim_Reset()
 {
-	trim->SlotTrimReset();
+    slot_CloseTab(ui.tabWidget_main->currentIndex());
+    QWidget *widget = trim->SlotTrimReset();
+    ui.tabWidget_main->insertTab(11, widget, "Signal");
+    //trim->SlotTrimReset();
 }
 
 void pd_studio::slot_Trim_Export()
@@ -75,7 +85,40 @@ void pd_studio::slot_Trim_Export()
 
 void pd_studio::slot_Update()
 {
-    if(ui.tabWidget_main->currentIndex()==11){
-        trim->SlotTrimUpdate(ui.tabWidget_main->currentWidget());
-    }
+    slot_CloseTab(ui.tabWidget_main->currentIndex());
+    QWidget *widget = trim->SlotTrimUpdate();
+    ui.tabWidget_main->insertTab(11, widget, "Signal");
+//    if(ui.tabWidget_main->currentIndex()==11){
+//        trim->SlotTrimUpdate(ui.tabWidget_main->currentWidget());
+//    }
 }
+
+void pd_studio::slot_Filter()
+{
+	slot_CloseTab(21);
+
+    if(resul_acc.size()<1){
+        QMessageBox::information(NULL, "Warning",
+                     "No data to filt!",
+                     QMessageBox::Yes);
+        return;
+    }
+
+	filter = new filter_bandpass(resul_acc);
+	filter->FiltData(filter_acc);
+    QWidget *widget = filter->ShowResult();
+    ui.tabWidget_main->insertTab(21, widget, "Filter");
+}
+
+void pd_studio::slot_Filter_Update()
+{
+    slot_CloseTab(21); //21ÊÇÕë¶ÔÂË²¨µÄ±àºÅ
+	if (filter_acc.size() < 1) {
+		filter = new filter_bandpass(resul_acc);
+		filter->FiltData(filter_acc);
+	}
+
+    QWidget *widget = filter->ShowResult();
+    ui.tabWidget_main->insertTab(21, widget, "Filter");
+}
+ 

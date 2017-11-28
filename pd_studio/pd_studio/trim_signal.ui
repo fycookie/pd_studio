@@ -6,14 +6,14 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>570</width>
-    <height>371</height>
+    <width>789</width>
+    <height>450</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>570</width>
-    <height>270</height>
+    <width>750</width>
+    <height>450</height>
    </size>
   </property>
   <property name="windowTitle">
@@ -44,8 +44,8 @@
          <widget class="QWidget" name="widget_z" native="true">
           <property name="minimumSize">
            <size>
-            <width>200</width>
-            <height>100</height>
+            <width>400</width>
+            <height>150</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -69,8 +69,8 @@
          <widget class="QWidget" name="widget_x" native="true">
           <property name="minimumSize">
            <size>
-            <width>200</width>
-            <height>100</height>
+            <width>400</width>
+            <height>150</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -94,8 +94,8 @@
          <widget class="QWidget" name="widget_y" native="true">
           <property name="minimumSize">
            <size>
-            <width>200</width>
-            <height>100</height>
+            <width>400</width>
+            <height>150</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -119,8 +119,8 @@
          <widget class="QWidget" name="widget" native="true">
           <property name="minimumSize">
            <size>
-            <width>150</width>
-            <height>300</height>
+            <width>300</width>
+            <height>450</height>
            </size>
           </property>
          </widget>

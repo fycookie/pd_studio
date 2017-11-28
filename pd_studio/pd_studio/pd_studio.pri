@@ -7,12 +7,23 @@
 message("You are running qmake on a generated .pro file. This may not work!")
 
 
-HEADERS += ./global_data.h \
+<<<<<<< HEAD
+HEADERS += ./fdacoefs_FilterCoef.h \
+    ./global_data.h \
     ./pd_studio.h \
+    ./filter_bandpass.h \
     ./trim_signal.h
-SOURCES += ./main.cpp \
+SOURCES += ./filter_bandpass.cpp \
+    ./main.cpp \
     ./trim_signal.cpp \
     ./pd_studio.cpp
 FORMS += ./pd_studio.ui \
-    ./trim_signal.ui
+    ./trim_signal.ui \
+    ./filter_bandpass.ui
+=======
+HEADERS += ./pd_studio/pd_studio.h
+SOURCES += ./pd_studio/main.cpp \
+    ./pd_studio/pd_studio.cpp
+FORMS += ./pd_studio/pd_studio.ui
+>>>>>>> e4eb5acc65727b075835e32551e8d89e1ddb0da7
 RESOURCES += pd_studio.qrc

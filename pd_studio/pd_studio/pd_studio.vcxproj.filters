@@ -36,14 +36,29 @@
     <ClCompile Include="pd_studio.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="GeneratedFiles\Debug\moc_pd_studio.cpp">
-      <Filter>Generated Files</Filter>
+    <ClCompile Include="trim_signal.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="filter_bandpass.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_trim_signal.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
-    <ClCompile Include="trim_signal.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="GeneratedFiles\Release\moc_trim_signal.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_filter_bandpass.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_filter_bandpass.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Debug\moc_pd_studio.cpp">
+      <Filter>Generated Files</Filter>
+    </ClCompile>
+    <ClCompile Include="GeneratedFiles\Release\moc_pd_studio.cpp">
+      <Filter>Generated Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -62,12 +77,27 @@
     <CustomBuild Include="trim_signal.ui">
       <Filter>Form Files</Filter>
     </CustomBuild>
+    <CustomBuild Include="filter_bandpass.ui">
+      <Filter>Form Files</Filter>
+    </CustomBuild>
+    <CustomBuild Include="filter_bandpass.h">
+      <Filter>Header Files</Filter>
+    </CustomBuild>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="global_data.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_trim_signal.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_filter_bandpass.h">
+      <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="fdacoefs_FilterCoef.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="GeneratedFiles\ui_pd_studio.h">
       <Filter>Generated Files</Filter>
     </ClInclude>
   </ItemGroup>

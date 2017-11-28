@@ -9,6 +9,7 @@
 #include <QDateTime>
 #include <QMessageBox>
 #include <fstream>
+#include <direct.h>
 #include "QWT\qwt_plot.h"
 #include "QWT\qwt_plot_curve.h"
 #include "QWT\qwt_plot_magnifier.h"
@@ -58,28 +59,37 @@ void trim_signal::ReadFile(
 	}
 }
 
-void trim_signal::SlotTrimSave(double begin, double end)
+QWidget* trim_signal::SlotTrimSave(vector<ResultantAcc> &data,
+                                   double t_begin, double t_end)
 {
-    vecDataTrim.clear();
+	vecDataTrim.clear();
 
     for(auto item: vecSignal){
-        if(item.t < begin)
+        if(item.t < t_begin)
             continue;
         else{
-            if(item.t < end)
+            if(item.t > t_end)
                 break;
-            vecDataTrim.push_back(item);
+			vecDataTrim.push_back(item);
         }
     }
 
-    PlotSignal();
+	ResultantAcc acc;
+    for(auto item: vecDataTrim){
+        acc.time=item.t;
+        acc.data=item.o;
+		data.push_back(acc);
+    }
+
+    return PlotSignal();
 }
 
-void trim_signal::SlotTrimReset()
+QWidget* trim_signal::SlotTrimReset()
 {
-    vecDataTrim.assign(vecSignal.begin(),
-                       vecSignal.end());
-    PlotSignal();
+	vecDataTrim.clear();
+	vecDataTrim.assign(vecSignal.begin(),
+		vecSignal.end());
+    return PlotSignal();
 }
 
 void trim_signal::SlotTrimExport()
@@ -92,23 +102,33 @@ void trim_signal::SlotTrimExport()
     QDateTime dt;
     QString day = dt.currentDateTime().toString("yyyyMMdd");
     QString time= dt.currentDateTime().toString("hh_mm_ss");
-    QString path = "..//data//"+day+"//"+time+".csv";
+	string path = QString(".\\Resources\\data\\" + day).toStdString();
+	mkdir(path.c_str());
+	path += "\\" + time.toStdString() + ".csv";
     ofstream ofile;
-    ofile.open(path.toStdString(), ios::out);
+	ofile.open(path, ios::out);
+	if (!ofile.is_open())
+	{
+		QMessageBox::information(this, "Warning",
+			"Cannot open or create file.", QMessageBox::Yes);
+	}
     ofile << "data trim:" << endl;
     ofile << "time" << "," << "signal" << endl;
 
-    for (int i = 0; i < sizeof(vecDataTrim.size()); i++) {
+    for (int i = 0; i < vecDataTrim.size(); i++) {
         ofile << vecDataTrim[i].t << "," <<
-                 vecDataTrim[i].o << endl;
+			vecDataTrim[i].o << endl;
     }
 
     ofile.close();
+
+	QMessageBox::information(this, "Hint",
+		"Export trim data successfully.", QMessageBox::Yes);
 }
 
-void trim_signal::SlotTrimUpdate(QWidget *widegt)
+QWidget* trim_signal::SlotTrimUpdate()
 {
-    PlotSignal();
+    return PlotSignal();
 }
 
 void trim_signal::ReadCSV(string path)
@@ -123,7 +143,7 @@ void trim_signal::ReadCSV(string path)
                 signal.o = sqrt(signal.x * signal.x +
                                 signal.y * signal.y +
                                 signal.z * signal.z);
-                vecSignal.push_back(signal);
+				vecSignal.push_back(signal);
             }
             else {
                 continue;

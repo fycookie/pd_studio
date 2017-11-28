@@ -4,9 +4,14 @@
 #include "ui_pd_studio.h"
 #include "global_data.h"
 #include "trim_signal.h"
+#include "filter_bandpass.h"
 #include <fstream>
+#include <vector>
 
-using namespace std;
+using std::vector;
+namespace Ui {
+	class pd_studio;
+}
 
 class pd_studio : public QMainWindow
 {
@@ -17,8 +22,11 @@ public:
 	~pd_studio() {}
 
 private:
-    Ui::pd_studio_qmainwindow ui;
+    Ui::pd_studio ui;
 	trim_signal *trim;
+	filter_bandpass *filter;
+    vector<ResultantAcc> resul_acc;
+	vector<ResultantAcc> filter_acc;
 
 private slots:
     void slot_FileImport();
@@ -28,4 +36,7 @@ private slots:
     void slot_Trim_Reset();
     void slot_Trim_Save();
 	void slot_Update();
+    //Data Process
+    void slot_Filter();
+    void slot_Filter_Update();
 };
