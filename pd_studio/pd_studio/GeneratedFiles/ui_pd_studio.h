@@ -81,6 +81,7 @@ public:
     QVBoxLayout *vlt_freq;
     QRadioButton *rbtn_fft;
     QRadioButton *rbtn_wavelet;
+    QPushButton *btn_fTrans_update;
     QSpacerItem *data_deal_horizontalSpacer;
     QTabWidget *tabWidget_main;
     QMenuBar *menuBar;
@@ -211,7 +212,7 @@ public:
         tab_data_deal->setObjectName(QStringLiteral("tab_data_deal"));
         layoutWidget1 = new QWidget(tab_data_deal);
         layoutWidget1->setObjectName(QStringLiteral("layoutWidget1"));
-        layoutWidget1->setGeometry(QRect(1, 6, 547, 76));
+        layoutWidget1->setGeometry(QRect(1, 6, 581, 76));
         horizontalLayout_3 = new QHBoxLayout(layoutWidget1);
         horizontalLayout_3->setSpacing(6);
         horizontalLayout_3->setContentsMargins(11, 11, 11, 11);
@@ -323,7 +324,7 @@ public:
         gbox_trans = new QGroupBox(layoutWidget1);
         gbox_trans->setObjectName(QStringLiteral("gbox_trans"));
         gbox_trans->setMinimumSize(QSize(150, 0));
-        gbox_trans->setMaximumSize(QSize(150, 16777215));
+        gbox_trans->setMaximumSize(QSize(200, 16777215));
         horizontalLayout_5 = new QHBoxLayout(gbox_trans);
         horizontalLayout_5->setSpacing(6);
         horizontalLayout_5->setContentsMargins(11, 11, 11, 11);
@@ -359,6 +360,11 @@ public:
 
 
         horizontalLayout_5->addLayout(vlt_freq);
+
+        btn_fTrans_update = new QPushButton(gbox_trans);
+        btn_fTrans_update->setObjectName(QStringLiteral("btn_fTrans_update"));
+
+        horizontalLayout_5->addWidget(btn_fTrans_update);
 
 
         horizontalLayout_3->addWidget(gbox_trans);
@@ -435,6 +441,7 @@ public:
         btn_filter_update->setText(QApplication::translate("pd_studio", "update", Q_NULLPTR));
         rbtn_fft->setText(QApplication::translate("pd_studio", "fft", Q_NULLPTR));
         rbtn_wavelet->setText(QApplication::translate("pd_studio", "wavelet", Q_NULLPTR));
+        btn_fTrans_update->setText(QApplication::translate("pd_studio", "FUpdate", Q_NULLPTR));
         tabWidget_menu->setTabText(tabWidget_menu->indexOf(tab_data_deal), QApplication::translate("pd_studio", "data_deal", Q_NULLPTR));
     } // retranslateUi
 

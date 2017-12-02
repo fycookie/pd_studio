@@ -46,8 +46,9 @@ void trim_signal::ReadFile(
 	case csv:
 		ReadCSV(fPath);
 		if (vecSignal.size()>0) {
-			vecDataTrim.assign(vecSignal.begin(),
-				vecSignal.end());
+			for (auto item : vecSignal) {
+				vecDataTrim.push_back(item);
+			}
 		}
 		break;
 	case txt:
@@ -63,7 +64,7 @@ QWidget* trim_signal::SlotTrimSave(vector<ResultantAcc> &data,
                                    double t_begin, double t_end)
 {
 	vecDataTrim.clear();
-
+	data.clear();
     for(auto item: vecSignal){
         if(item.t < t_begin)
             continue;
@@ -87,8 +88,9 @@ QWidget* trim_signal::SlotTrimSave(vector<ResultantAcc> &data,
 QWidget* trim_signal::SlotTrimReset()
 {
 	vecDataTrim.clear();
-	vecDataTrim.assign(vecSignal.begin(),
-		vecSignal.end());
+	for (auto item : vecSignal) {
+		vecDataTrim.push_back(item);
+	}
     return PlotSignal();
 }
 

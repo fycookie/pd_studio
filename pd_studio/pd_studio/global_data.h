@@ -39,5 +39,7 @@ enum TrimSignalType
 
 struct TabEditType
 {
-    int TrimTab = 11;
+    int TrimTab = 1;
+	int FilterTab = 2;
+	int FFTTab = 3;
 };

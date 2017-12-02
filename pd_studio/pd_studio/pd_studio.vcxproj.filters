@@ -60,6 +60,9 @@
     <ClCompile Include="GeneratedFiles\Release\moc_pd_studio.cpp">
       <Filter>Generated Files</Filter>
     </ClCompile>
+    <ClCompile Include="qfft.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="pd_studio.ui">
@@ -99,6 +102,12 @@
     </ClInclude>
     <ClInclude Include="GeneratedFiles\ui_pd_studio.h">
       <Filter>Generated Files</Filter>
+    </ClInclude>
+    <ClInclude Include="qcomplex.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="qfft.h">
+      <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

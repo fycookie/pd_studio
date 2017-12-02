@@ -24,9 +24,13 @@ public:
 private:
     Ui::pd_studio ui;
 	trim_signal *trim;
-	filter_bandpass *filter;
+	//filter_bandpass *filter;
+	vector<ResultantAcc> raw_acc;
     vector<ResultantAcc> resul_acc;
 	vector<ResultantAcc> filter_acc;
+
+	const int SAMPLE = 256;
+	vector<double> fft_acc;
 
 private slots:
     void slot_FileImport();
@@ -35,8 +39,13 @@ private slots:
     void slot_Trim_Export();
     void slot_Trim_Reset();
     void slot_Trim_Save();
-	void slot_Update();
     //Data Process
     void slot_Filter();
     void slot_Filter_Update();
+	void slot_FFT_Trans();
+    void slot_FFT_Update();
+
+private:
+	void Filter_SetWidget();
+	void FFT_Trans();
 };

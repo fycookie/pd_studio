@@ -1,3 +1,5 @@
 ﻿  pd_studio.cpp
+e:\graduate_related\app\pd_studio\pd_studio\qfft.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
+e:\graduate_related\app\pd_studio\pd_studio\qcomplex.h : warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
   pd_studio.vcxproj -> E:\Graduate_Related\APP\pd_studio\x64\Debug\pd_studio.exe
   pd_studio.vcxproj -> E:\Graduate_Related\APP\pd_studio\x64\Debug\pd_studio.pdb (Full PDB)

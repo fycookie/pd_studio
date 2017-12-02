@@ -77,6 +77,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="qfft.cpp" />
     <ClCompile Include="filter_bandpass.cpp" />
     <ClCompile Include="GeneratedFiles\Debug\moc_filter_bandpass.cpp">
       <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Release|x64'">true</ExcludedFromBuild>
@@ -137,6 +138,7 @@
     </CustomBuild>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="qcomplex.h" />
     <ClInclude Include="fdacoefs_FilterCoef.h" />
     <CustomBuild Include="filter_bandpass.h">
       <Message Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">Moc%27ing filter_bandpass.h...</Message>
@@ -148,6 +150,7 @@
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
       <AdditionalInputs Condition="'$(Configuration)|$(Platform)'=='Release|x64'">$(QTDIR)\bin\moc.exe;%(FullPath)</AdditionalInputs>
     </CustomBuild>
+    <ClInclude Include="qfft.h" />
     <ClInclude Include="GeneratedFiles\ui_filter_bandpass.h" />
     <ClInclude Include="GeneratedFiles\ui_pd_studio.h" />
     <ClInclude Include="GeneratedFiles\ui_trim_signal.h" />
